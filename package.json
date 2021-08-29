@@ -1,0 +1,17 @@
+{
+  "name": "clone-rename",
+  "version": "1.0.0",
+  "description": "Script to copy and rename file names and variables in it to a certain pattern",
+  "main": "index.js",
+  "bin": {
+    "clone-rename": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johannes Millan",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
