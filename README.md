@@ -5,20 +5,21 @@ Little  commandline script to clone a directory and rename all files and folders
 ## Example
 ``` 
 npm i clone-rename-refactor
-clone-rename ./some-folder jira open-project
+clone-rename ./some-folder some-old-name cool-new-feature 
 ```
 
 Gives the following output:
 ```
 _______________CLONE_RENAME_______________
-In dir:  ./some-folder
-Input      jira => open-project
+In dir:    ./some-folder
+Input      some-old-name => cool-new-feature
 -------------------------------------------
-replaces inside file names  jira => open-project
-replaces inside file contents  Jira => OpenProject
-replaces inside file contents  jira => openProject
-replaces inside file contents  JIRA => OPEN_PROJECT
-replaces inside file contents  jira => open-project
+replaces inside file names   some-old-name => cool-new-feature
+replaces inside file contents  SomeOldName => CoolNewFeature
+replaces inside file contents  someOldName => coolNewFeature
+replaces inside file contents  SOME_OLD_NAME => COOL_NEW_FEATURE
+replaces inside file contents  some-old-name => cool-new-feature
+__________________________________________
 ```
 
 
