@@ -1,5 +1,5 @@
 {
-  "name": "clone-rename",
+  "name": "clone-rename-refactor",
   "version": "1.0.1",
   "description": "Script to copy and rename file names and variables in it to a certain pattern",
   "main": "index.js",

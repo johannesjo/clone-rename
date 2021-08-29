@@ -1,9 +1,10 @@
-# clone-rename
-==============
+# clone-rename-refactor
+=======================
 Little  commandline script to clone a directory and rename all files and folders with a certain pattern as well as all variable names in it.
 
 ## Example
 ``` 
+npm i clone-rename-refactor
 clone-rename ./src/app/features/issue/providers/open-project jira open-project
 ```
 
