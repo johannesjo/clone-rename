@@ -30,8 +30,8 @@ console.log('fileNames ', CFG.fileNames(inVal), '=>', CFG.fileNames(outVal));
 renameFileAndFolderNamesRecursive(dir, CFG.fileNames(inVal), CFG.fileNames(outVal));
 
 CFG.variableNames.forEach(rm => {
-  renameVariableNamesRecursive(dir, rm(inVal), rm(outVal));
   console.log('variables ', rm(inVal), '=>', rm(outVal));
+  renameVariableNamesRecursive(dir, rm(inVal), rm(outVal));
 });
 console.log('__________________________________________');
 
@@ -56,9 +56,8 @@ function renameVariableNamesRecursive(dir, from, to) {
     const itsPath = path.resolve(dir, it);
     const itsStat = fs.statSync(itsPath);
 
-
     if (itsStat.isDirectory()) {
-      renameFileAndFolderNamesRecursive(itsPath, from, to);
+      renameVariableNamesRecursive(itsPath, from, to);
     } else {
       const data = fs.readFileSync(itsPath, {encoding: 'UTF-8'});
       const replacer = new RegExp(from, 'g')
