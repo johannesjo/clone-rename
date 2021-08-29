@@ -29,6 +29,15 @@ console.log('fileNames ', CFG.fileNames(inVal), '=>', CFG.fileNames(outVal));
 
 renameFileAndFolderNamesRecursive(dir, CFG.fileNames(inVal), CFG.fileNames(outVal));
 
+// because we hav eno handle for different replace types, when "word" => "twoOrMoreSyllableWord",
+// because "word" =>(camelCase) "word" && "word" =>(kebabCase) "word"
+if (kebabCase(inVal).split('-').length === 1 && kebabCase(outVal).split('-').length > 1) {
+  const inValInFileFilename = CFG.fileNames(inVal);
+  const outValInFileFilename = CFG.fileNames(outVal);
+  renameVariableNamesRecursive(dir, `/${inValInFileFilename}`, `/${outValInFileFilename}`);
+  renameVariableNamesRecursive(dir, `${inValInFileFilename}/`, `${outValInFileFilename}/`);
+}
+
 CFG.variableNames.forEach(rm => {
   console.log('variables ', rm(inVal), '=>', rm(outVal));
   renameVariableNamesRecursive(dir, rm(inVal), rm(outVal));
@@ -59,9 +68,9 @@ function renameVariableNamesRecursive(dir, from, to) {
     if (itsStat.isDirectory()) {
       renameVariableNamesRecursive(itsPath, from, to);
     } else {
-      const data = fs.readFileSync(itsPath, {encoding: 'UTF-8'});
+      const dataStr = fs.readFileSync(itsPath, {encoding: 'UTF-8'});
       const replacer = new RegExp(from, 'g')
-      const transformed = data.replace(replacer, to)
+      const transformed = dataStr.replace(replacer, to)
       fs.writeFileSync(itsPath, transformed);
     }
   });
