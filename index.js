@@ -36,6 +36,9 @@ if (kebabCase(inVal).split('-').length === 1 && kebabCase(outVal).split('-').len
   const outValInFileFilename = CFG.fileNames(outVal);
   renameVariableNamesRecursive(dir, `/${inValInFileFilename}`, `/${outValInFileFilename}`);
   renameVariableNamesRecursive(dir, `${inValInFileFilename}/`, `${outValInFileFilename}/`);
+
+  // special only for kebab case
+  renameVariableNamesRecursive(dir, `-${rm.kebabCase(inVal)}-`, `-${rm.kebabCase(outVal)}-`);
 }
 
 CFG.variableNames.forEach(rm => {
